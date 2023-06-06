@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latency Matters: Real-Time Action Forecasting Transformer</title>
+</head>
+<body class="h-100 d-flex flex-column">
+    <main class="container flex-grow-1">
+        <header class="py-3">
+            <h2 class="mt-1 mt-sm-3 mt-md-3" style="font-weight: 700">
+                Latency Matters: Real-Time Action Forecasting Transformer
+            </h2>
+            <div class="authors mt-3">
+                <div class="author">
+                    <a href="https://www.linkedin.com/in/harshayu-girase-764b06153">Harshayu Girase</a>
+                    <sup>1,2</sup>
+                </div>
+                <div class="author">
+                    <a href="https://lukan94.github.io/">Nakul Agarwal</a>
+                    <sup>1</sup>
+                </div>
+                <div class="author">
+                    <a href="https://chihochoi.github.io/">Chiho Choi</a>
+                    <sup>1</sup>
+                </div>
+                <div class="author">
+                    <a href="https://karttikeya.github.io/">Karttikeya Mangalam</a>
+                    <sup>2</sup>
+                </div>
+            </div>
+            <div class="insts mt-1">
+                <div class="inst pr-3"><sup>1</sup>Honda Research Institute USA</div>
+                <div class="inst"><sup>2</sup>UC Berkeley</div>
+            </div>
+            <div class="linkscontainer">
+                <div class="links mt-4">
+                    <a href="https://openaccess.thecvf.com/content/CVPR2023/papers/Girase_Latency_Matters_Real-Time_Action_Forecasting_Transformer_CVPR_2023_paper.pdf" target="_blank">[Paper]</a>
+                    <a href="https://www.youtube.com/watch?v=0tbK36hzSM0" target="_blank">[Video]</a>
+                    <a href="#" onclick="return false">[Code]</a>
+                </div>
+            </div>
+        </header>
+        <div style="max-width:90%;margin:auto">
+            <section id="abstract">
+                <h3 class="mt-4 mb-2">
+                    <div style="display:inline-flex;align-items:center;">
+                        Abstract
+                    </div>
+                </h3>
+                <p>
+                    We present RAFTformer, a real-time action forecasting transformer for latency-aware real-world action forecasting. 
+                    RAFTformer is a two-stage fully transformer based architecture comprising of a video transformer backbone that 
+                    operates on high resolution, short-range clips, and a head transformer encoder that temporally aggregates 
+                    information from multiple short-range clips to span a long-term horizon. Additionally, we propose a novel 
+                    self-supervised shuffled causal masking scheme as a model level augmentation to improve forecasting fidelity. 
+                    Finally, we also propose a novel real-time evaluation setting for action forecasting that directly couples model 
+                    inference latency to overall forecasting performance and brings forth a hitherto overlooked trade-off between 
+                    latency and action forecasting performance. Our parsimonious network design facilitates RAFTformer inference latency 
+                    to be 9x smaller than prior works at the same forecasting accuracy. Owing to its two-staged design, RAFTformer uses 
+                    94% less training compute and 90% lesser training parameters to outperform prior state-of-the-art baselines by 4.9 
+                    points on EGTEA Gaze+ and by 1.4 points on EPIC-Kitchens100 validation set, as measured by Top-5 recall (T5R) in the 
+                    offline setting. In the real-time setting, RAFTformer outperforms prior works by an even greater margin of up to 4.4 
+                    T5R points on the EPIC-Kitchens-100 dataset.
+                </p>
+            </section>
+            <section id="architecture">
+                <h3 class="mt-4 mb-2">
+                    <div style="display:inline-flex;align-items:center;">
+                        Architecture
+                    </div>
+                </h3>
+                <div class="row px-1 my-2">
+                    <div class="col gx-3"></div>
+                    <div class="col-10 gx-3"><img src="images/RAFTformer.png" alt="" style="max-width:100%"></div>
+                    <div class="col gx-3"></div>
+                </div>
+                <p>
+                    RAFTformer is a real-time action anticipation transformer architecture comprised of two stages. The first stage is a 
+                    pretrained short-term backbone that produces individual clip embeddings independently of other clips. In the second stage,
+                    absolute position encodings are added and the resulting sequence is shuffled with a sampled permutation. The permutation encodings 
+                    are then added to the shuffled sequence and after concatenation with anticipation tokens, the sequence is processed with the RAFTformer 
+                    encoder. The output tokens are decoded via short & long-term action anticipation heads, as well as the feature prediction head trained 
+                    with self-supervised loss (L<sub>SCM</sub>), future feature prediction loss (L<sub>future</sub>) and action forecasting loss 
+                    (L<sub>focal</sub>).
+                </p>
+            </section>
+            <section id="results">
+                <h3 class="mt-4">
+                    <div style="display:inline-flex;align-items:center;">
+                        Results
+                    </div>
+                </h3>
+                <h5 class="my-2">
+                    <div style="display:inline-flex;align-items:center;">
+                        Latency Reduction
+                    </div>
+                </h5>
+                <p>
+                    RAFTformer achieves at least 9x reduction in latency as well as a reduction of 94% in GPU training time and 90% 
+                    in the number of trainable parameters than prior state-of-the-art action forecasting methods. To the best of our 
+                    knowledge, our work is the first to achieve action anticipation in real-time (<i>i.e.</i> 25 fps).
+                </p>
+                <h5 class="my-2">
+                    <div style="display:inline-flex;align-items:center;">
+                        Real-Time Evaluation Setting
+                    </div>
+                </h5>
+                <p>
+                    We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
+                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
+                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
+                    forecasting models in the future.
+                </p>
+                <div class="row px-1 my-2">
+                    <div class="col-5 gx-3"><img src="images/real-time-eval.png" alt="" style="max-width:100%"></div>
+                    <div class="col-7 gx-3"><img src="images/tradeoff.png" alt="" style="max-width:100%"></div>
+                </div>
+                <p>
+                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
+                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
+                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
+                    forecasting models in the future.
+                </p>
+                <h5 class="my-2">
+                    <div style="display:inline-flex;align-items:center;">
+                        Performance Experiments
+                    </div>
+                </h5>
+                <p>
+                    In the offline setting, RAFTformer outperforms prior state-of-the-art methods by 4.9 points on the EGTEA Gaze+ 
+                    dataset and by 1.4 points on the EPIC-Kitchens-100 dataset, as measured by the Top-5 Recall metric, and by a relative 
+                    margin of 5.3% on the EPIC-Kitchens-55 dataset by the Top-1 Accuracy metric. In the real-time setting, RAFTformer 
+                    outperforms prior works by an even greater margin of up to 4.4 Top-5 Recall points on the EPIC-Kitchens-100 dataset.
+                </p>
+                <div class="row px-1 my-2">
+                    <div class="col gx-3"></div>
+                    <div class="col-9 gx-3"><img src="images/EK-offline.png" alt="" style="max-width:100%"></div>
+                    <div class="col gx-3"></div>
+                </div>
+                <p>
+                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
+                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
+                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
+                    forecasting models in the future.
+                </p>
+                <div class="row px-1 my-2">
+                    <div class="col gx-3"></div>
+                    <div class="col-9 gx-3"><img src="images/EK-online.png" alt="" style="max-width:100%"></div>
+                    <div class="col gx-3"></div>
+                </div>
+                <p>
+                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
+                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
+                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
+                    forecasting models in the future.
+                </p>
+            </section>
+        </div>
+    </main>
+</body>
+</html>

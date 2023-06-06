@@ -1,0 +1,37 @@
+header {
+  text-align: center;
+}
+
+.authors {
+  font-size: 1.1em;
+  max-width: 860px;
+  margin: 0 auto;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.author {
+  padding: 0 0.6rem;
+}
+
+.insts {
+  font-size: 0.9em;
+  justify-content: center;
+  display: flex;
+}
+
+.linkscontainer {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.links {
+  font-size: 2em;
+  font-weight: 300;
+  gap: 30px;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
