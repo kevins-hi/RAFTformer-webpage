@@ -120,10 +120,17 @@
                     <div class="col-7 gx-3"><img src="images/tradeoff.png" alt="" style="max-width:100%"></div>
                 </div>
                 <p>
-                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
-                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
-                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
-                    forecasting models in the future.
+                    The diagram on the left details the difference between offline and real-time evaluation. During offline evaluation, 
+                    inference latency is assumed to be zero, allowing predictions to be made at any time step using all prior frames up to the 
+                    forecasting horizon. During real-time evaluation, the nonzero inference latency of the model must be accounted for. In this 
+                    setting, predictions must be made using frames further in the past. The reduced latency of RAFTformer allows it to use 
+                    significantly more recent frames than prior methods.
+                </p>
+                <p>
+                    The graph on the right shows the trade-off between latency and high-fidelity forecasts in the real-time evaluation 
+                    setting. Bigger models continue to perform better in latency agnostic offline settings, but when latency is accounted 
+                    for, bigger models with higher latency drop in forecasting performance because the model is unable to access more  
+                    recent data.
                 </p>
                 <h5 class="my-2">
                     <div style="display:inline-flex;align-items:center;">
@@ -142,10 +149,10 @@
                     <div class="col gx-3"></div>
                 </div>
                 <p>
-                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
-                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
-                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
-                    forecasting models in the future.
+                    The above table displays offline evaluation results on the EPIC-Kitchens-100 dataset for a one second forecasting horizon. 
+                    RAFTformer matches previous state-of-the-art models in action T5R while reducing latency by 9x, parameters by 8x, and training 
+                    time in GPU hours by 94%. RAFTformer-2B, which combines two separate RAFTformer models to train a two-backbone model, achieves 
+                    state-of-the-art results by a 1.4% T5R increase. 
                 </p>
                 <div class="row px-1 my-2">
                     <div class="col gx-3"></div>
@@ -153,10 +160,11 @@
                     <div class="col gx-3"></div>
                 </div>
                 <p>
-                    Filler text. We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
-                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
-                    inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
-                    forecasting models in the future.
+                    This table displays real-time evaluation results on the EPIC-Kitchens-55 dataset. Each comparison is performed between a pair 
+                    of models with their inference start times adjusted to account for latency such that they produce the forcasting output 
+                    simultaneously. In this setting, faster models can pragmatically utilize recent frames while slower models must rely on higher 
+                    fidelity prediction from older frames. We observe that RAFTformer outperforms prior methods by an <i>even larger</i> margin in 
+                    the real-time evaluation setting than the offline setting.
                 </p>
             </section>
         </div>
