@@ -100,7 +100,7 @@
                     </div>
                 </h5>
                 <p>
-                    RAFTformer achieves at least 9x reduction in latency as well as a reduction of 94% in GPU training time and 90% 
+                    RAFTformer achieves at least a 9x reduction in latency as well as a reduction of 94% in GPU training time and 90% 
                     in the number of trainable parameters than prior state-of-the-art action forecasting methods. To the best of our 
                     knowledge, our work is the first to achieve action anticipation in real-time (<i>i.e.</i> 25 fps).
                 </p>
@@ -111,7 +111,7 @@
                 </h5>
                 <p>
                     We propose a latency-aware real-time evaluation setting that better mimics practical deployment 
-                    settings for embodied forcasting systems. Real-time evaluation demonstrates a clear trade-off between 
+                    settings for embodied forecasting systems. Real-time evaluation demonstrates a clear trade-off between 
                     inference latency and model forecasting fidelity, paving the path for the development of latency-aware 
                     forecasting models in the future.
                 </p>
@@ -128,7 +128,7 @@
                 </p>
                 <p>
                     The graph on the right shows the trade-off between latency and high-fidelity forecasts in the real-time evaluation 
-                    setting. Bigger models continue to perform better in latency agnostic offline settings, but when latency is accounted 
+                    setting. Bigger models continue to perform better in latency agnostic offline settings. When latency is accounted 
                     for, bigger models with higher latency drop in forecasting performance because the model is unable to access more  
                     recent data.
                 </p>
@@ -161,10 +161,10 @@
                 </div>
                 <p>
                     This table displays real-time evaluation results on the EPIC-Kitchens-55 dataset. Each comparison is performed between a pair 
-                    of models with their inference start times adjusted to account for latency such that they produce the forcasting output 
+                    of models with their inference start times adjusted to account for latency such that they produce the forecasting output 
                     simultaneously. In this setting, faster models can pragmatically utilize recent frames while slower models must rely on higher 
                     fidelity prediction from older frames. We observe that RAFTformer outperforms prior methods by an <i>even larger</i> margin in 
-                    the real-time evaluation setting than the offline setting.
+                    the real-time evaluation setting than in the offline setting.
                 </p>
             </section>
         </div>
