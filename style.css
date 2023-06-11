@@ -17,6 +17,23 @@ h2 {
   font-weight: 600;
 }
 
+.btn-dropdown {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  box-shadow: none;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.375rem 0.75rem;
+  color: #f8f9fa;
+}
+
+.btn-dropdown:hover, .btn-dropdown:focus {
+  text-decoration: none;
+  color: #f8f9fa;
+}
+
 h3 {
   font-family: 'Google Sans', sans-serif;
   color: #363636;
@@ -57,4 +74,14 @@ h3 {
   font-size: .8em;
   font-weight: 400;
   line-height: 1.5;
+}
+
+.fa-caret-down{
+  transform: rotate(0deg);
+  transition: transform .3s linear;
+}
+
+.fa-caret-down.open{
+  transform: rotate(-90deg);
+  transition: transform .3s linear;
 }
