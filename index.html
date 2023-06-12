@@ -75,14 +75,14 @@
             </div>
         </header>
         <div style="max-width:70%;margin:auto">
-            <section id="new">
+            <section id="graph">
                 <h3 class="text-center text-light headline mt-5 mb-3">
-                    Bigger Models are <u>NOT</u> Necessarily Better
+                    Bigger Models are <span class="accent-color">NOT</span> Necessarily Better
                 </h3>
                 <p class="text-justify">
-                    In this paper, we propose a <i>new real-time setting</i> for evaluating action forecasting networks where bigger is not 
-                    necessarily better. Current state-of-the-art methods trend towards increasing model size for higher fidelity forecasts, 
-                    ignoring the cost of increased latency. The new latency-aware real-time setting better mimics practical deployment settings 
+                    In this paper, we propose a <i>new real-time setting</i> for evaluating action forecasting networks where bigger models do not 
+                    necessarily achieve a better performance. Current state-of-the-art methods trend towards increasing model size for higher fidelity 
+                    forecasts, ignoring the cost of increased latency. The new latency-aware real-time setting better mimics practical deployment settings 
                     for embodied forecasting systems, paving the path for the development of latency-aware forecasting models in the future.
                 </p>
                 <div class="row px-1 my-3">
@@ -92,8 +92,9 @@
                 </div>
                 <p class="text-justify">
                     The graph above shows a clear trade-off between latency and high-fidelity forecasts in the real-time evaluation setting.
-                    While bigger models continue to perform better in latency agnostic offline settings, in the real-time setting, high 
-                    latency models drop in forecasting performance because the model is unable to access more recent data.
+                    <span class="accent-color">While bigger models continue to perform better in latency agnostic offline settings, in the 
+                    real-time setting, high latency models drop in forecasting performance because the model is unable to access more recent 
+                    data.</span>
                 </p>
             </section>
             <section id="video">
@@ -109,9 +110,12 @@
                 </div>
             </section>
             <section id="diagram">
-                <div class="row px-1 mt-4 mb-3">
+                <h3 class="text-center text-light mt-4 mb-3">
+                    Overview of Real-Time Evaluation Setting
+                </h3>
+                <div class="row px-1 mb-3">
                     <div class="col"></div>
-                    <div class="col-7"><img class="border-0 custom-rounded" src="images/real-time-eval.png" alt="" style="max-width:100%"></div>
+                    <div class="col-6"><img class="border-0 custom-rounded" src="images/real-time-eval.png" alt="" style="max-width:100%"></div>
                     <div class="col"></div>
                 </div>
                 <p class="text-justify">
@@ -161,6 +165,47 @@
                     in latency. For more about this, see the paper.
                 </p>
             </section>
+            <section id="results">
+                <div class="row mt-4">
+                    <div class="col"></div>
+                    <div class="col-10 border-0 custom-rounded bg-dark">
+                        <div class="row">
+                            <div class="col"></div>
+                            <a class="col btn-dropdown" id="dropdown-container-2" data-toggle="collapse" href="#collapseResults" role="button" aria-expanded="false" aria-controls="collapseResults">
+                                <i class="fas fa-caret-down fa-2xs" id="caret-icon-2"></i>
+                                <span>Results</span>
+                            </a>
+                            <div class="col"></div>
+                        </div>
+                        <div class="collapse" id="collapseResults">
+                            <div class="row px-1 my-2">
+                                <div class="col gx-3"></div>
+                                <div class="col-10 gx-3"><img class="border-0 rounded" src="images/EK-offline.png" alt="" style="max-width:100%"></div>
+                                <div class="col gx-3"></div>
+                            </div>
+                            <p class="text-justify mx-2 mb-4">
+                                The above table displays offline evaluation results on the EPIC-Kitchens-100 dataset for a one second forecasting horizon. 
+                                <span class="accent-color">RAFTformer matches previous state-of-the-art models in action T5R while reducing latency by 9x, 
+                                parameters by 8x, and training time in GPU hours by 94%.</span> RAFTformer-2B, which combines two separate RAFTformer models 
+                                to train a two-backbone model, achieves state-of-the-art results by a 1.4% T5R increase. 
+                            </p>
+                            <div class="row px-1 my-2">
+                                <div class="col gx-3"></div>
+                                <div class="col-10 gx-3"><img class="border-0 rounded" src="images/EK-online.png" alt="" style="max-width:100%"></div>
+                                <div class="col gx-3"></div>
+                            </div>
+                            <p class="text-justify mx-2 mb-4">
+                                This table displays real-time evaluation results on the EPIC-Kitchens-55 dataset. Each comparison is performed between a pair 
+                                of models with their inference start times adjusted to account for latency such that they produce the forecasting output 
+                                simultaneously. In this setting, faster models can pragmatically utilize recent frames while slower models must rely on higher 
+                                fidelity prediction from older frames. <span class="accent-color">We observe that RAFTformer outperforms prior methods by an 
+                                <i>even larger</i> margin in the real-time evaluation setting than in the offline setting.</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col"></div>
+                </div>
+            </section>
         </div>
         <section id="BibTeX" style="max-width:80%;margin:auto">
             <div class="container is-max-desktop content">
@@ -176,6 +221,19 @@
 }</code></pre>
             </div>
         </section>
+        <div class="mb-5" style="max-width:70%;margin:auto">
+            <section id="ack">
+                <h3 class="text-center text-light mt-4 mb-2">
+                    Acknowledgements
+                </h3>
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore 
+                    magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo 
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </section>
+        </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
